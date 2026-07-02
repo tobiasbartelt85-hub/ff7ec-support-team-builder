@@ -178,12 +178,20 @@ getPotencies = case _ of
   MagicDamageBonus {} -> Nothing
   PhysATBConservationEffect {} -> Nothing
   MagATBConservationEffect {} -> Nothing
+  AmpPhysAbilities {} -> Nothing
+  AmpMagAbilities {} -> Nothing
   FireDamageUp { potencies } -> Just $ FireDamageUp' potencies
   IceDamageUp { potencies } -> Just $ IceDamageUp' potencies
   LightningDamageUp { potencies } -> Just $ LightningDamageUp' potencies
   EarthDamageUp { potencies } -> Just $ EarthDamageUp' potencies
   WaterDamageUp { potencies } -> Just $ WaterDamageUp' potencies
   WindDamageUp { potencies } -> Just $ WindDamageUp' potencies
+  AmpFireAbilities {} -> Nothing
+  AmpIceAbilities {} -> Nothing
+  AmpLightningAbilities {} -> Nothing
+  AmpEarthAbilities {} -> Nothing
+  AmpWaterAbilities {} -> Nothing
+  AmpWindAbilities {} -> Nothing
   FireResistUp { potencies } -> Just $ FireResistUp' potencies
   IceResistUp { potencies } -> Just $ IceResistUp' potencies
   LightningResistUp { potencies } -> Just $ LightningResistUp' potencies
@@ -214,6 +222,10 @@ getPotencies = case _ of
   MatkDown { potencies } -> Just $ MatkDown' potencies
   PdefDown { potencies } -> Just $ PdefDown' potencies
   MdefDown { potencies } -> Just $ MdefDown' potencies
+  SingleTgtPhysDmgRcvdUp {} -> Nothing
+  SingleTgtMagDmgRcvdUp {} -> Nothing
+  AllTgtPhysDmgRcvdUp {} -> Nothing
+  AllTgtMagDmgRcvdUp {} -> Nothing
   FireDamageDown { potencies } -> Just $ FireDamageDown' potencies
   IceDamageDown { potencies } -> Just $ IceDamageDown' potencies
   LightningDamageDown { potencies } -> Just $ LightningDamageDown' potencies
@@ -226,6 +238,18 @@ getPotencies = case _ of
   EarthResistDown { potencies } -> Just $ EarthResistDown' potencies
   WaterResistDown { potencies } -> Just $ WaterResistDown' potencies
   WindResistDown { potencies } -> Just $ WindResistDown' potencies
+  SingleTgtFireDmgRcvdUp {} -> Nothing
+  SingleTgtIceDmgRcvdUp {} -> Nothing
+  SingleTgtLightningDmgRcvdUp {} -> Nothing
+  SingleTgtEarthDmgRcvdUp {} -> Nothing
+  SingleTgtWaterDmgRcvdUp {} -> Nothing
+  SingleTgtWindDmgRcvdUp {} -> Nothing
+  AllTgtFireDmgRcvdUp {} -> Nothing
+  AllTgtIceDmgRcvdUp {} -> Nothing
+  AllTgtLightningDmgRcvdUp {} -> Nothing
+  AllTgtEarthDmgRcvdUp {} -> Nothing
+  AllTgtWaterDmgRcvdUp {} -> Nothing
+  AllTgtWindDmgRcvdUp {} -> Nothing
   Enfeeble {} -> Nothing
   Stop {} -> Nothing
   ExploitWeakness {} -> Nothing
