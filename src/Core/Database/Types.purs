@@ -166,6 +166,8 @@ data WeaponEffect
   | MagicDamageBonus { range :: Range, durExt :: DurExt, percentage :: Percentage }
   | PhysATBConservationEffect { range :: Range, durExt :: DurExt }
   | MagATBConservationEffect { range :: Range, durExt :: DurExt }
+  | AmpPhysAbilities { range :: Range, durExt :: DurExt }
+  | AmpMagAbilities { range :: Range, durExt :: DurExt }
   | FireDamageUp { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | IceDamageUp { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | LightningDamageUp { range :: Range, durExt :: DurExt, potencies :: Potencies }
@@ -190,6 +192,12 @@ data WeaponEffect
   | EarthATBConservationEffect { range :: Range, durExt :: DurExt }
   | WaterATBConservationEffect { range :: Range, durExt :: DurExt }
   | WindATBConservationEffect { range :: Range, durExt :: DurExt }
+  | AmpFireAbilities { range :: Range, durExt :: DurExt }
+  | AmpIceAbilities { range :: Range, durExt :: DurExt }
+  | AmpLightningAbilities { range :: Range, durExt :: DurExt }
+  | AmpEarthAbilities { range :: Range, durExt :: DurExt }
+  | AmpWaterAbilities { range :: Range, durExt :: DurExt }
+  | AmpWindAbilities { range :: Range, durExt :: DurExt }
   | FireResistUp { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | IceResistUp { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | LightningResistUp { range :: Range, durExt :: DurExt, potencies :: Potencies }
@@ -203,6 +211,10 @@ data WeaponEffect
   | MatkDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | PdefDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | MdefDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
+  | SingleTgtPhysDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | SingleTgtMagDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtPhysDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtMagDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
   | FireDamageDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | IceDamageDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | LightningDamageDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
@@ -215,6 +227,18 @@ data WeaponEffect
   | EarthResistDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | WaterResistDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
   | WindResistDown { range :: Range, durExt :: DurExt, potencies :: Potencies }
+  | SingleTgtFireDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | SingleTgtIceDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | SingleTgtLightningDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | SingleTgtEarthDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | SingleTgtWaterDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | SingleTgtWindDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtFireDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtIceDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtLightningDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtEarthDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtWaterDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
+  | AllTgtWindDmgRcvdUp { range :: Range, durExt :: DurExt, percentage :: Percentage }
   | FireWeakness { range :: Range, durExt :: DurExt, percentage :: Percentage }
   | IceWeakness { range :: Range, durExt :: DurExt, percentage :: Percentage }
   | LightningWeakness { range :: Range, durExt :: DurExt, percentage :: Percentage }
@@ -253,6 +277,8 @@ data FilterEffectType
   | FilterMagicDamageBonus
   | FilterPhysATBConservationEffect
   | FilterMagATBConservationEffect
+  | FilterAmpPhysAbilities
+  | FilterAmpMagAbilities
   | FilterFireDamageUp
   | FilterIceDamageUp
   | FilterLightningDamageUp
@@ -283,6 +309,12 @@ data FilterEffectType
   | FilterEarthATBConservationEffect
   | FilterWaterATBConservationEffect
   | FilterWindATBConservationEffect
+  | FilterAmpFireAbilities
+  | FilterAmpIceAbilities
+  | FilterAmpLightningAbilities
+  | FilterAmpEarthAbilities
+  | FilterAmpWaterAbilities
+  | FilterAmpWindAbilities
 
   -- Debuffs
   | FilterEnfeeble
@@ -305,6 +337,22 @@ data FilterEffectType
   | FilterEarthResistDown
   | FilterWaterResistDown
   | FilterWindResistDown
+  | FilterSingleTgtPhysDmgRcvdUp
+  | FilterSingleTgtMagDmgRcvdUp
+  | FilterAllTgtPhysDmgRcvdUp
+  | FilterAllTgtMagDmgRcvdUp
+  | FilterSingleTgtFireDmgRcvdUp
+  | FilterSingleTgtIceDmgRcvdUp
+  | FilterSingleTgtLightningDmgRcvdUp
+  | FilterSingleTgtEarthDmgRcvdUp
+  | FilterSingleTgtWaterDmgRcvdUp
+  | FilterSingleTgtWindDmgRcvdUp
+  | FilterAllTgtFireDmgRcvdUp
+  | FilterAllTgtIceDmgRcvdUp
+  | FilterAllTgtLightningDmgRcvdUp
+  | FilterAllTgtEarthDmgRcvdUp
+  | FilterAllTgtWaterDmgRcvdUp
+  | FilterAllTgtWindDmgRcvdUp
   | FilterFireWeakness
   | FilterIceWeakness
   | FilterLightningWeakness
@@ -363,6 +411,8 @@ instance Show WeaponEffect where
       MagicDamageBonus rec -> showRec rec "MagicDamageBonus"
       PhysATBConservationEffect rec -> showRec rec "PhysATBConservationEffect"
       MagATBConservationEffect rec -> showRec rec "MagATBConservationEffect"
+      AmpPhysAbilities rec -> showRec rec "AmpPhysAbilities"
+      AmpMagAbilities rec -> showRec rec "AmpMagAbilities"
       FireDamageUp rec -> showRec rec "FireDamageUp"
       IceDamageUp rec -> showRec rec "IceDamageUp"
       LightningDamageUp rec -> showRec rec "LightningDamageUp"
@@ -387,6 +437,12 @@ instance Show WeaponEffect where
       EarthATBConservationEffect rec -> showRec rec "EarthATBConservationEffect"
       WaterATBConservationEffect rec -> showRec rec "WaterATBConservationEffect"
       WindATBConservationEffect rec -> showRec rec "WindATBConservationEffect"
+      AmpFireAbilities rec -> showRec rec "AmpFireAbilities"
+      AmpIceAbilities rec -> showRec rec "AmpIceAbilities"
+      AmpLightningAbilities rec -> showRec rec "AmpLightningAbilities"
+      AmpEarthAbilities rec -> showRec rec "AmpEarthAbilities"
+      AmpWaterAbilities rec -> showRec rec "AmpWaterAbilities"
+      AmpWindAbilities rec -> showRec rec "AmpWindAbilities"
       FireResistUp rec -> showRec rec "FireResistUp"
       IceResistUp rec -> showRec rec "IceResistUp"
       LightningResistUp rec -> showRec rec "LightningResistUp"
@@ -399,6 +455,10 @@ instance Show WeaponEffect where
       MatkDown rec -> showRec rec "MatkDown"
       PdefDown rec -> showRec rec "PdefDown"
       MdefDown rec -> showRec rec "MdefDown"
+      SingleTgtPhysDmgRcvdUp rec -> showRec rec "SingleTgtPhysDmgRcvdUp"
+      SingleTgtMagDmgRcvdUp rec -> showRec rec "SingleTgtMagDmgRcvdUp"
+      AllTgtPhysDmgRcvdUp rec -> showRec rec "AllTgtPhysDmgRcvdUp"
+      AllTgtMagDmgRcvdUp rec -> showRec rec "AllTgtMagDmgRcvdUp"
       FireDamageDown rec -> showRec rec "FireDamageDown"
       IceDamageDown rec -> showRec rec "IceDamageDown"
       LightningDamageDown rec -> showRec rec "LightningDamageDown"
@@ -411,6 +471,18 @@ instance Show WeaponEffect where
       EarthResistDown rec -> showRec rec "EarthResistDown"
       WaterResistDown rec -> showRec rec "WaterResistDown"
       WindResistDown rec -> showRec rec "WindResistDown"
+      SingleTgtFireDmgRcvdUp rec -> showRec rec "SingleTgtFireDmgRcvdUp"
+      SingleTgtIceDmgRcvdUp rec -> showRec rec "SingleTgtIceDmgRcvdUp"
+      SingleTgtLightningDmgRcvdUp rec -> showRec rec "SingleTgtLightningDmgRcvdUp"
+      SingleTgtEarthDmgRcvdUp rec -> showRec rec "SingleTgtEarthDmgRcvdUp"
+      SingleTgtWaterDmgRcvdUp rec -> showRec rec "SingleTgtWaterDmgRcvdUp"
+      SingleTgtWindDmgRcvdUp rec -> showRec rec "SingleTgtWindDmgRcvdUp"
+      AllTgtFireDmgRcvdUp rec -> showRec rec "AllTgtFireDmgRcvdUp"
+      AllTgtIceDmgRcvdUp rec -> showRec rec "AllTgtIceDmgRcvdUp"
+      AllTgtLightningDmgRcvdUp rec -> showRec rec "AllTgtLightningDmgRcvdUp"
+      AllTgtEarthDmgRcvdUp rec -> showRec rec "AllTgtEarthDmgRcvdUp"
+      AllTgtWaterDmgRcvdUp rec -> showRec rec "AllTgtWaterDmgRcvdUp"
+      AllTgtWindDmgRcvdUp rec -> showRec rec "AllTgtWindDmgRcvdUp"
       FireWeakness rec -> showRec rec "FireWeakness"
       IceWeakness rec -> showRec rec "IceWeakness"
       LightningWeakness rec -> showRec rec "LightningWeakness"
@@ -455,6 +527,8 @@ instance Show FilterEffectType where
     FilterMagicDamageBonus -> "FilterMagicDamageBonus"
     FilterPhysATBConservationEffect -> "FilterPhysATBConservationEffect"
     FilterMagATBConservationEffect -> "FilterMagATBConservationEffect"
+    FilterAmpPhysAbilities -> "FilterAmpPhysAbilities"
+    FilterAmpMagAbilities -> "FilterAmpMagAbilities"
     FilterFireDamageUp -> "FilterFireDamageUp"
     FilterIceDamageUp -> "FilterIceDamageUp"
     FilterLightningDamageUp -> "FilterLightningDamageUp"
@@ -485,10 +559,20 @@ instance Show FilterEffectType where
     FilterEarthATBConservationEffect -> "FilterEarthATBConservationEffect"
     FilterWaterATBConservationEffect -> "FilterWaterATBConservationEffect"
     FilterWindATBConservationEffect -> "FilterWindATBConservationEffect"
+    FilterAmpFireAbilities -> "FilterAmpFireAbilities"
+    FilterAmpIceAbilities -> "FilterAmpIceAbilities"
+    FilterAmpLightningAbilities -> "FilterAmpLightningAbilities"
+    FilterAmpEarthAbilities -> "FilterAmpEarthAbilities"
+    FilterAmpWaterAbilities -> "FilterAmpWaterAbilities"
+    FilterAmpWindAbilities -> "FilterAmpWindAbilities"
     FilterPatkDown -> "FilterPatkDown"
     FilterMatkDown -> "FilterMatkDown"
     FilterPdefDown -> "FilterPdefDown"
     FilterMdefDown -> "FilterMdefDown"
+    FilterSingleTgtPhysDmgRcvdUp -> "FilterSingleTgtPhysDmgRcvdUp"
+    FilterSingleTgtMagDmgRcvdUp -> "FilterSingleTgtMagDmgRcvdUp"
+    FilterAllTgtPhysDmgRcvdUp -> "FilterAllTgtPhysDmgRcvdUp"
+    FilterAllTgtMagDmgRcvdUp -> "FilterAllTgtMagDmgRcvdUp"
     FilterFireDamageDown -> "FilterFireDamageDown"
     FilterIceDamageDown -> "FilterIceDamageDown"
     FilterLightningDamageDown -> "FilterLightningDamageDown"
@@ -501,6 +585,18 @@ instance Show FilterEffectType where
     FilterEarthResistDown -> "FilterEarthResistDown"
     FilterWaterResistDown -> "FilterWaterResistDown"
     FilterWindResistDown -> "FilterWindResistDown"
+    FilterSingleTgtFireDmgRcvdUp -> "FilterSingleTgtFireDmgRcvdUp"
+    FilterSingleTgtIceDmgRcvdUp -> "FilterSingleTgtIceDmgRcvdUp"
+    FilterSingleTgtLightningDmgRcvdUp -> "FilterSingleTgtLightningDmgRcvdUp"
+    FilterSingleTgtEarthDmgRcvdUp -> "FilterSingleTgtEarthDmgRcvdUp"
+    FilterSingleTgtWaterDmgRcvdUp -> "FilterSingleTgtWaterDmgRcvdUp"
+    FilterSingleTgtWindDmgRcvdUp -> "FilterSingleTgtWindDmgRcvdUp"
+    FilterAllTgtFireDmgRcvdUp -> "FilterAllTgtFireDmgRcvdUp"
+    FilterAllTgtIceDmgRcvdUp -> "FilterAllTgtIceDmgRcvdUp"
+    FilterAllTgtLightningDmgRcvdUp -> "FilterAllTgtLightningDmgRcvdUp"
+    FilterAllTgtEarthDmgRcvdUp -> "FilterAllTgtEarthDmgRcvdUp"
+    FilterAllTgtWaterDmgRcvdUp -> "FilterAllTgtWaterDmgRcvdUp"
+    FilterAllTgtWindDmgRcvdUp -> "FilterAllTgtWindDmgRcvdUp"
     FilterFireWeakness -> "FilterFireWeakness"
     FilterIceWeakness -> "FilterIceWeakness"
     FilterLightningWeakness -> "FilterLightningWeakness"
@@ -537,6 +633,8 @@ instance WriteForeign WeaponEffect where
       MagicDamageBonus rec -> writeRecord rec "MagicDamageBonus"
       PhysATBConservationEffect rec -> writeRecord rec "PhysATBConservationEffect"
       MagATBConservationEffect rec -> writeRecord rec "MagATBConservationEffect"
+      AmpPhysAbilities rec -> writeRecord rec "AmpPhysAbilities"
+      AmpMagAbilities rec -> writeRecord rec "AmpMagAbilities"
       FireDamageUp rec -> writeRecord rec "FireDamageUp"
       IceDamageUp rec -> writeRecord rec "IceDamageUp"
       LightningDamageUp rec -> writeRecord rec "LightningDamageUp"
@@ -567,12 +665,22 @@ instance WriteForeign WeaponEffect where
       EarthATBConservationEffect rec -> writeRecord rec "EarthATBConservationEffect"
       WaterATBConservationEffect rec -> writeRecord rec "WaterATBConservationEffect"
       WindATBConservationEffect rec -> writeRecord rec "WindATBConservationEffect"
+      AmpFireAbilities rec -> writeRecord rec "AmpFireAbilities"
+      AmpIceAbilities rec -> writeRecord rec "AmpIceAbilities"
+      AmpLightningAbilities rec -> writeRecord rec "AmpLightningAbilities"
+      AmpEarthAbilities rec -> writeRecord rec "AmpEarthAbilities"
+      AmpWaterAbilities rec -> writeRecord rec "AmpWaterAbilities"
+      AmpWindAbilities rec -> writeRecord rec "AmpWindAbilities"
       Veil rec -> writeRecord rec "Veil"
       Provoke rec -> writeRecord rec "Provoke"
       PatkDown rec -> writeRecord rec "PatkDown"
       MatkDown rec -> writeRecord rec "MatkDown"
       PdefDown rec -> writeRecord rec "PdefDown"
       MdefDown rec -> writeRecord rec "MdefDown"
+      SingleTgtPhysDmgRcvdUp rec -> writeRecord rec "SingleTgtPhysDmgRcvdUp"
+      SingleTgtMagDmgRcvdUp rec -> writeRecord rec "SingleTgtMagDmgRcvdUp"
+      AllTgtPhysDmgRcvdUp rec -> writeRecord rec "AllTgtPhysDmgRcvdUp"
+      AllTgtMagDmgRcvdUp rec -> writeRecord rec "AllTgtMagDmgRcvdUp"
       FireDamageDown rec -> writeRecord rec "FireDamageDown"
       IceDamageDown rec -> writeRecord rec "IceDamageDown"
       LightningDamageDown rec -> writeRecord rec "LightningDamageDown"
@@ -585,6 +693,18 @@ instance WriteForeign WeaponEffect where
       EarthResistDown rec -> writeRecord rec "EarthResistDown"
       WaterResistDown rec -> writeRecord rec "WaterResistDown"
       WindResistDown rec -> writeRecord rec "WindResistDown"
+      SingleTgtFireDmgRcvdUp rec -> writeRecord rec "SingleTgtFireDmgRcvdUp"
+      SingleTgtIceDmgRcvdUp rec -> writeRecord rec "SingleTgtIceDmgRcvdUp"
+      SingleTgtLightningDmgRcvdUp rec -> writeRecord rec "SingleTgtLightningDmgRcvdUp"
+      SingleTgtEarthDmgRcvdUp rec -> writeRecord rec "SingleTgtEarthDmgRcvdUp"
+      SingleTgtWaterDmgRcvdUp rec -> writeRecord rec "SingleTgtWaterDmgRcvdUp"
+      SingleTgtWindDmgRcvdUp rec -> writeRecord rec "SingleTgtWindDmgRcvdUp"
+      AllTgtFireDmgRcvdUp rec -> writeRecord rec "AllTgtFireDmgRcvdUp"
+      AllTgtIceDmgRcvdUp rec -> writeRecord rec "AllTgtIceDmgRcvdUp"
+      AllTgtLightningDmgRcvdUp rec -> writeRecord rec "AllTgtLightningDmgRcvdUp"
+      AllTgtEarthDmgRcvdUp rec -> writeRecord rec "AllTgtEarthDmgRcvdUp"
+      AllTgtWaterDmgRcvdUp rec -> writeRecord rec "AllTgtWaterDmgRcvdUp"
+      AllTgtWindDmgRcvdUp rec -> writeRecord rec "AllTgtWindDmgRcvdUp"
       FireWeakness rec -> writeRecord rec "FireWeakness"
       IceWeakness rec -> writeRecord rec "IceWeakness"
       LightningWeakness rec -> writeRecord rec "LightningWeakness"
@@ -632,6 +752,8 @@ instance WriteForeign FilterEffectType where
     FilterMagicDamageBonus -> writeImpl "FilterMagicDamageBonus"
     FilterPhysATBConservationEffect -> writeImpl "FilterPhysATBConservationEffect"
     FilterMagATBConservationEffect -> writeImpl "FilterMagATBConservationEffect"
+    FilterAmpPhysAbilities -> writeImpl "FilterAmpPhysAbilities"
+    FilterAmpMagAbilities -> writeImpl "FilterAmpMagAbilities"
     FilterFireDamageUp -> writeImpl "FilterFireDamageUp"
     FilterIceDamageUp -> writeImpl "FilterIceDamageUp"
     FilterLightningDamageUp -> writeImpl "FilterLightningDamageUp"
@@ -662,10 +784,18 @@ instance WriteForeign FilterEffectType where
     FilterEarthATBConservationEffect -> writeImpl "FilterEarthATBConservationEffect"
     FilterWaterATBConservationEffect -> writeImpl "FilterWaterATBConservationEffect"
     FilterWindATBConservationEffect -> writeImpl "FilterWindATBConservationEffect"
+    FilterAmpFireAbilities -> writeImpl "FilterAmpFireAbilities"
+    FilterAmpIceAbilities -> writeImpl "FilterAmpIceAbilities"
+    FilterAmpLightningAbilities -> writeImpl "FilterAmpLightningAbilities"
+    FilterAmpEarthAbilities -> writeImpl "FilterAmpEarthAbilities"
+    FilterAmpWaterAbilities -> writeImpl "FilterAmpWaterAbilities"
+    FilterAmpWindAbilities -> writeImpl "FilterAmpWindAbilities"
     FilterPatkDown -> writeImpl "FilterPatkDown"
     FilterMatkDown -> writeImpl "FilterMatkDown"
-    FilterPdefDown -> writeImpl "FilterPdefDown"
-    FilterMdefDown -> writeImpl "FilterMdefDown"
+    FilterSingleTgtPhysDmgRcvdUp -> writeImpl "FilterSingleTgtPhysDmgRcvdUp"
+    FilterSingleTgtMagDmgRcvdUp -> writeImpl "FilterSingleTgtMagDmgRcvdUp"
+    FilterAllTgtPhysDmgRcvdUp -> writeImpl "FilterAllTgtPhysDmgRcvdUp"
+    FilterAllTgtMagDmgRcvdUp -> writeImpl "FilterAllTgtMagDmgRcvdUp"
     FilterFireDamageDown -> writeImpl "FilterFireDamageDown"
     FilterIceDamageDown -> writeImpl "FilterIceDamageDown"
     FilterLightningDamageDown -> writeImpl "FilterLightningDamageDown"
@@ -678,6 +808,18 @@ instance WriteForeign FilterEffectType where
     FilterEarthResistDown -> writeImpl "FilterEarthResistDown"
     FilterWaterResistDown -> writeImpl "FilterWaterResistDown"
     FilterWindResistDown -> writeImpl "FilterWindResistDown"
+    FilterSingleTgtFireDmgRcvdUp -> writeImpl "FilterSingleTgtFireDmgRcvdUp"
+    FilterSingleTgtIceDmgRcvdUp -> writeImpl "FilterSingleTgtIceDmgRcvdUp"
+    FilterSingleTgtLightningDmgRcvdUp -> writeImpl "FilterSingleTgtLightningDmgRcvdUp"
+    FilterSingleTgtEarthDmgRcvdUp -> writeImpl "FilterSingleTgtEarthDmgRcvdUp"
+    FilterSingleTgtWaterDmgRcvdUp -> writeImpl "FilterSingleTgtWaterDmgRcvdUp"
+    FilterSingleTgtWindDmgRcvdUp -> writeImpl "FilterSingleTgtWindDmgRcvdUp"
+    FilterAllTgtFireDmgRcvdUp -> writeImpl "FilterAllTgtFireDmgRcvdUp"
+    FilterAllTgtIceDmgRcvdUp -> writeImpl "FilterAllTgtIceDmgRcvdUp"
+    FilterAllTgtLightningDmgRcvdUp -> writeImpl "FilterAllTgtLightningDmgRcvdUp"
+    FilterAllTgtEarthDmgRcvdUp -> writeImpl "FilterAllTgtEarthDmgRcvdUp"
+    FilterAllTgtWaterDmgRcvdUp -> writeImpl "FilterAllTgtWaterDmgRcvdUp"
+    FilterAllTgtWindDmgRcvdUp -> writeImpl "FilterAllTgtWindDmgRcvdUp"
     FilterFireWeakness -> writeImpl "FilterFireWeakness"
     FilterIceWeakness -> writeImpl "FilterIceWeakness"
     FilterLightningWeakness -> writeImpl "FilterLightningWeakness"
@@ -726,6 +868,8 @@ instance ReadForeign WeaponEffect where
         MagicDamageBonus _ -> tryRead MagicDamageBonus recType value "MagicDamageBonus"
         PhysATBConservationEffect _ -> tryRead PhysATBConservationEffect recType value "PhysATBConservationEffect"
         MagATBConservationEffect _ -> tryRead MagATBConservationEffect recType value "MagATBConservationEffect"
+        AmpPhysAbilities _ -> tryRead AmpPhysAbilities recType value "AmpPhysAbilities"
+        AmpMagAbilities _ -> tryRead AmpMagAbilities recType value "AmpMagAbilities"
         FireDamageUp _ -> tryRead FireDamageUp recType value "FireDamageUp"
         IceDamageUp _ -> tryRead IceDamageUp recType value "IceDamageUp"
         LightningDamageUp _ -> tryRead LightningDamageUp recType value "LightningDamageUp"
@@ -738,6 +882,12 @@ instance ReadForeign WeaponEffect where
         EarthATBConservationEffect _ -> tryRead EarthATBConservationEffect recType value "EarthATBConservationEffect"
         WaterATBConservationEffect _ -> tryRead WaterATBConservationEffect recType value "WaterATBConservationEffect"
         WindATBConservationEffect _ -> tryRead WindATBConservationEffect recType value "WindATBConservationEffect"
+        AmpFireAbilities _ -> tryRead AmpFireAbilities recType value "AmpFireAbilities"
+        AmpIceAbilities _ -> tryRead AmpIceAbilities recType value "AmpIceAbilities"
+        AmpLightningAbilities _ -> tryRead AmpLightningAbilities recType value "AmpLightningAbilities"
+        AmpEarthAbilities _ -> tryRead AmpEarthAbilities recType value "AmpEarthAbilities"
+        AmpWaterAbilities _ -> tryRead AmpWaterAbilities recType value "AmpWaterAbilities"
+        AmpWindAbilities _ -> tryRead AmpWindAbilities recType value "AmpWindAbilities"
         FireResistUp _ -> tryRead FireResistUp recType value "FireResistUp"
         IceResistUp _ -> tryRead IceResistUp recType value "IceResistUp"
         LightningResistUp _ -> tryRead LightningResistUp recType value "LightningResistUp"
@@ -760,6 +910,10 @@ instance ReadForeign WeaponEffect where
         MatkDown _ -> tryRead MatkDown recType value "MatkDown"
         PdefDown _ -> tryRead PdefDown recType value "PdefDown"
         MdefDown _ -> tryRead MdefDown recType value "MdefDown"
+        SingleTgtPhysDmgRcvdUp _ -> tryRead SingleTgtPhysDmgRcvdUp recType value "SingleTgtPhysDmgRcvdUp"
+        SingleTgtMagDmgRcvdUp _ -> tryRead SingleTgtMagDmgRcvdUp recType value "SingleTgtMagDmgRcvdUp"
+        AllTgtPhysDmgRcvdUp _ -> tryRead AllTgtPhysDmgRcvdUp recType value "AllTgtPhysDmgRcvdUp"
+        AllTgtMagDmgRcvdUp _ -> tryRead AllTgtMagDmgRcvdUp recType value "AllTgtMagDmgRcvdUp"
         FireDamageDown _ -> tryRead FireDamageDown recType value "FireDamageDown"
         IceDamageDown _ -> tryRead IceDamageDown recType value "IceDamageDown"
         LightningDamageDown _ -> tryRead LightningDamageDown recType value "LightningDamageDown"
@@ -772,6 +926,18 @@ instance ReadForeign WeaponEffect where
         EarthResistDown _ -> tryRead EarthResistDown recType value "EarthResistDown"
         WaterResistDown _ -> tryRead WaterResistDown recType value "WaterResistDown"
         WindResistDown _ -> tryRead WindResistDown recType value "WindResistDown"
+        SingleTgtFireDmgRcvdUp _ -> tryRead SingleTgtFireDmgRcvdUp recType value "SingleTgtFireDmgRcvdUp"
+        SingleTgtIceDmgRcvdUp _ -> tryRead SingleTgtIceDmgRcvdUp recType value "SingleTgtIceDmgRcvdUp"
+        SingleTgtLightningDmgRcvdUp _ -> tryRead SingleTgtLightningDmgRcvdUp recType value "SingleTgtLightningDmgRcvdUp"
+        SingleTgtEarthDmgRcvdUp _ -> tryRead SingleTgtEarthDmgRcvdUp recType value "SingleTgtEarthDmgRcvdUp"
+        SingleTgtWaterDmgRcvdUp _ -> tryRead SingleTgtWaterDmgRcvdUp recType value "SingleTgtWaterDmgRcvdUp"
+        SingleTgtWindDmgRcvdUp _ -> tryRead SingleTgtWindDmgRcvdUp recType value "SingleTgtWindDmgRcvdUp"
+        AllTgtFireDmgRcvdUp _ -> tryRead AllTgtFireDmgRcvdUp recType value "AllTgtFireDmgRcvdUp"
+        AllTgtIceDmgRcvdUp _ -> tryRead AllTgtIceDmgRcvdUp recType value "AllTgtIceDmgRcvdUp"
+        AllTgtLightningDmgRcvdUp _ -> tryRead AllTgtLightningDmgRcvdUp recType value "AllTgtLightningDmgRcvdUp"
+        AllTgtEarthDmgRcvdUp _ -> tryRead AllTgtEarthDmgRcvdUp recType value "AllTgtEarthDmgRcvdUp"
+        AllTgtWaterDmgRcvdUp _ -> tryRead AllTgtWaterDmgRcvdUp recType value "AllTgtWaterDmgRcvdUp"
+        AllTgtWindDmgRcvdUp _ -> tryRead AllTgtWindDmgRcvdUp recType value "AllTgtWindDmgRcvdUp"
         FireWeakness _ -> tryRead FireWeakness recType value "FireWeakness"
         IceWeakness _ -> tryRead IceWeakness recType value "IceWeakness"
         LightningWeakness _ -> tryRead LightningWeakness recType value "LightningWeakness"
@@ -818,6 +984,8 @@ instance ReadForeign FilterEffectType where
         FilterMagicDamageBonus -> tryRead x str "FilterMagicDamageBonus"
         FilterPhysATBConservationEffect -> tryRead x str "FilterPhysATBConservationEffect"
         FilterMagATBConservationEffect -> tryRead x str "FilterMagATBConservationEffect"
+        FilterAmpPhysAbilities -> tryRead x str "FilterAmpPhysAbilities"
+        FilterAmpMagAbilities -> tryRead x str "FilterAmpMagAbilities"
         FilterFireDamageUp -> tryRead x str "FilterFireDamageUp"
         FilterIceDamageUp -> tryRead x str "FilterIceDamageUp"
         FilterLightningDamageUp -> tryRead x str "FilterLightningDamageUp"
@@ -848,10 +1016,20 @@ instance ReadForeign FilterEffectType where
         FilterEarthATBConservationEffect -> tryRead x str "FilterEarthATBConservationEffect"
         FilterWaterATBConservationEffect -> tryRead x str "FilterWaterATBConservationEffect"
         FilterWindATBConservationEffect -> tryRead x str "FilterWindATBConservationEffect"
+        FilterAmpFireAbilities -> tryRead x str "FilterAmpFireAbilities"
+        FilterAmpIceAbilities -> tryRead x str "FilterAmpIceAbilities"
+        FilterAmpLightningAbilities -> tryRead x str "FilterAmpLightningAbilities"
+        FilterAmpEarthAbilities -> tryRead x str "FilterAmpEarthAbilities"
+        FilterAmpWaterAbilities -> tryRead x str "FilterAmpWaterAbilities"
+        FilterAmpWindAbilities -> tryRead x str "FilterAmpWindAbilities"
         FilterPatkDown -> tryRead x str "FilterPatkDown"
         FilterMatkDown -> tryRead x str "FilterMatkDown"
         FilterPdefDown -> tryRead x str "FilterPdefDown"
         FilterMdefDown -> tryRead x str "FilterMdefDown"
+        FilterSingleTgtPhysDmgRcvdUp -> tryRead x str "FilterSingleTgtPhysDmgRcvdUp"
+        FilterSingleTgtMagDmgRcvdUp -> tryRead x str "FilterSingleTgtMagDmgRcvdUp"
+        FilterAllTgtPhysDmgRcvdUp -> tryRead x str "FilterAllTgtPhysDmgRcvdUp"
+        FilterAllTgtMagDmgRcvdUp -> tryRead x str "FilterAllTgtMagDmgRcvdUp"
         FilterFireDamageDown -> tryRead x str "FilterFireDamageDown"
         FilterIceDamageDown -> tryRead x str "FilterIceDamageDown"
         FilterLightningDamageDown -> tryRead x str "FilterLightningDamageDown"
@@ -864,6 +1042,18 @@ instance ReadForeign FilterEffectType where
         FilterEarthResistDown -> tryRead x str "FilterEarthResistDown"
         FilterWaterResistDown -> tryRead x str "FilterWaterResistDown"
         FilterWindResistDown -> tryRead x str "FilterWindResistDown"
+        FilterSingleTgtFireDmgRcvdUp -> tryRead x str "FilterSingleTgtFireDmgRcvdUp"
+        FilterSingleTgtIceDmgRcvdUp -> tryRead x str "FilterSingleTgtIceDmgRcvdUp"
+        FilterSingleTgtLightningDmgRcvdUp -> tryRead x str "FilterSingleTgtLightningDmgRcvdUp"
+        FilterSingleTgtEarthDmgRcvdUp -> tryRead x str "FilterSingleTgtEarthDmgRcvdUp"
+        FilterSingleTgtWaterDmgRcvdUp -> tryRead x str "FilterSingleTgtWaterDmgRcvdUp"
+        FilterSingleTgtWindDmgRcvdUp -> tryRead x str "FilterSingleTgtWindDmgRcvdUp"
+        FilterAllTgtFireDmgRcvdUp -> tryRead x str "FilterAllTgtFireDmgRcvdUp"
+        FilterAllTgtIceDmgRcvdUp -> tryRead x str "FilterAllTgtIceDmgRcvdUp"
+        FilterAllTgtLightningDmgRcvdUp -> tryRead x str "FilterAllTgtLightningDmgRcvdUp"
+        FilterAllTgtEarthDmgRcvdUp -> tryRead x str "FilterAllTgtEarthDmgRcvdUp"
+        FilterAllTgtWaterDmgRcvdUp -> tryRead x str "FilterAllTgtWaterDmgRcvdUp"
+        FilterAllTgtWindDmgRcvdUp -> tryRead x str "FilterAllTgtWindDmgRcvdUp"
         FilterFireWeakness -> tryRead x str "FilterFireWeakness"
         FilterIceWeakness -> tryRead x str "FilterIceWeakness"
         FilterLightningWeakness -> tryRead x str "FilterLightningWeakness"
@@ -919,6 +1109,8 @@ instance Display FilterEffectType where
     FilterMagicDamageBonus -> "Mag. damage bonus"
     FilterPhysATBConservationEffect -> "Phys. ATB Conservation Effect"
     FilterMagATBConservationEffect -> "Mag. ATB Conservation Effect"
+    FilterAmpPhysAbilities -> "Amp. Phys. Abilities"
+    FilterAmpMagAbilities -> "Amp. Mag. Abilities"
     FilterFireDamageUp -> "Fire damage up"
     FilterIceDamageUp -> "Ice damage up"
     FilterLightningDamageUp -> "Lightning damage up"
@@ -949,11 +1141,21 @@ instance Display FilterEffectType where
     FilterEarthATBConservationEffect -> "Earth ATB Conservation Effect"
     FilterWaterATBConservationEffect -> "Water ATB Conservation Effect"
     FilterWindATBConservationEffect -> "Wind ATB Conservation Effect"
+    FilterAmpFireAbilities -> "Amp. Fire Abilities"
+    FilterAmpIceAbilities -> "Amp. Ice Abilities"
+    FilterAmpLightningAbilities -> "Amp. Lightning Abilities"
+    FilterAmpEarthAbilities -> "Amp. Earth Abilities"
+    FilterAmpWaterAbilities -> "Amp. Water Abilities"
+    FilterAmpWindAbilities -> "Amp. Wind Abilities"
 
     FilterPatkDown -> "PATK down"
     FilterMatkDown -> "MATK down"
     FilterPdefDown -> "PDEF down"
     FilterMdefDown -> "MDEF down"
+    FilterSingleTgtPhysDmgRcvdUp -> "Single-Tgt. Phys. Dmg. Rcvd. Up"
+    FilterSingleTgtMagDmgRcvdUp -> "Single-Tgt. Mag. Dmg. Rcvd. Up"
+    FilterAllTgtPhysDmgRcvdUp -> "All-Tgt. Phys. Dmg. Rcvd. Up"
+    FilterAllTgtMagDmgRcvdUp -> "All-Tgt. Mag. Dmg. Rcvd. Up"
     FilterFireDamageDown -> "Fire damage down"
     FilterIceDamageDown -> "Ice damage down"
     FilterLightningDamageDown -> "Lightning damage down"
@@ -966,6 +1168,18 @@ instance Display FilterEffectType where
     FilterEarthResistDown -> "Earth resist down"
     FilterWaterResistDown -> "Water resist down"
     FilterWindResistDown -> "Wind resist down"
+    FilterSingleTgtFireDmgRcvdUp -> "Single-Tgt. Fire Dmg. Rcvd. Up"
+    FilterSingleTgtIceDmgRcvdUp -> "Single-Tgt. Ice Dmg. Rcvd. Up"
+    FilterSingleTgtLightningDmgRcvdUp -> "Single-Tgt. Lightning Dmg. Rcvd. Up"
+    FilterSingleTgtEarthDmgRcvdUp -> "Single-Tgt. Earth Dmg. Rcvd. Up"
+    FilterSingleTgtWaterDmgRcvdUp -> "Single-Tgt. Water Dmg. Rcvd. Up"
+    FilterSingleTgtWindDmgRcvdUp -> "Single-Tgt. Wind Dmg. Rcvd. Up"
+    FilterAllTgtFireDmgRcvdUp -> "All-Tgt. Fire Dmg. Rcvd. Up"
+    FilterAllTgtIceDmgRcvdUp -> "All-Tgt. Ice Dmg. Rcvd. Up"
+    FilterAllTgtLightningDmgRcvdUp -> "All-Tgt. Lightning Dmg. Rcvd. Up"
+    FilterAllTgtEarthDmgRcvdUp -> "All-Tgt. Earth Dmg. Rcvd. Up"
+    FilterAllTgtWaterDmgRcvdUp -> "All-Tgt. Water Dmg. Rcvd. Up"
+    FilterAllTgtWindDmgRcvdUp -> "All-Tgt. Wind Dmg. Rcvd. Up"
     FilterFireWeakness -> "Fire weakness"
     FilterIceWeakness -> "Ice weakness"
     FilterLightningWeakness -> "Lightning weakness"
@@ -1004,6 +1218,8 @@ allFilterEffectTypes =
   , FilterMagicDamageBonus
   , FilterPhysATBConservationEffect
   , FilterMagATBConservationEffect
+  , FilterAmpPhysAbilities
+  , FilterAmpMagAbilities
   , FilterFireDamageUp
   , FilterIceDamageUp
   , FilterLightningDamageUp
@@ -1028,6 +1244,12 @@ allFilterEffectTypes =
   , FilterEarthDamageBonus
   , FilterWaterDamageBonus
   , FilterWindDamageBonus
+  , FilterAmpFireAbilities
+  , FilterAmpIceAbilities
+  , FilterAmpLightningAbilities
+  , FilterAmpEarthAbilities
+  , FilterAmpWaterAbilities
+  , FilterAmpWindAbilities
   , FilterFireATBConservationEffect
   , FilterIceATBConservationEffect
   , FilterLightningATBConservationEffect
@@ -1038,6 +1260,10 @@ allFilterEffectTypes =
   , FilterMatkDown
   , FilterPdefDown
   , FilterMdefDown
+  , FilterSingleTgtPhysDmgRcvdUp
+  , FilterSingleTgtMagDmgRcvdUp
+  , FilterAllTgtPhysDmgRcvdUp
+  , FilterAllTgtMagDmgRcvdUp
   , FilterFireDamageDown
   , FilterIceDamageDown
   , FilterLightningDamageDown
@@ -1050,6 +1276,18 @@ allFilterEffectTypes =
   , FilterEarthResistDown
   , FilterWaterResistDown
   , FilterWindResistDown
+  , FilterSingleTgtFireDmgRcvdUp
+  , FilterSingleTgtIceDmgRcvdUp
+  , FilterSingleTgtLightningDmgRcvdUp
+  , FilterSingleTgtEarthDmgRcvdUp
+  , FilterSingleTgtWaterDmgRcvdUp
+  , FilterSingleTgtWindDmgRcvdUp
+  , FilterAllTgtFireDmgRcvdUp
+  , FilterAllTgtIceDmgRcvdUp
+  , FilterAllTgtLightningDmgRcvdUp
+  , FilterAllTgtEarthDmgRcvdUp
+  , FilterAllTgtWaterDmgRcvdUp
+  , FilterAllTgtWindDmgRcvdUp
   , FilterFireWeakness
   , FilterIceWeakness
   , FilterLightningWeakness
@@ -1088,6 +1326,8 @@ allFilterEffectTypes =
     FilterMagicDamageBonus -> unit
     FilterPhysATBConservationEffect -> unit
     FilterMagATBConservationEffect -> unit
+    FilterAmpPhysAbilities -> unit
+    FilterAmpMagAbilities -> unit
     FilterFireDamageUp -> unit
     FilterIceDamageUp -> unit
     FilterLightningDamageUp -> unit
@@ -1118,10 +1358,20 @@ allFilterEffectTypes =
     FilterEarthATBConservationEffect -> unit
     FilterWaterATBConservationEffect -> unit
     FilterWindATBConservationEffect -> unit
+    FilterAmpFireAbilities -> unit
+    FilterAmpIceAbilities -> unit
+    FilterAmpLightningAbilities -> unit
+    FilterAmpEarthAbilities -> unit
+    FilterAmpWaterAbilities -> unit
+    FilterAmpWindAbilities -> unit
     FilterPatkDown -> unit
     FilterMatkDown -> unit
     FilterPdefDown -> unit
     FilterMdefDown -> unit
+    FilterSingleTgtPhysDmgRcvdUp -> unit
+    FilterSingleTgtMagDmgRcvdUp -> unit
+    FilterAllTgtPhysDmgRcvdUp -> unit
+    FilterAllTgtMagDmgRcvdUp -> unit
     FilterFireDamageDown -> unit
     FilterIceDamageDown -> unit
     FilterLightningDamageDown -> unit
@@ -1134,6 +1384,18 @@ allFilterEffectTypes =
     FilterEarthResistDown -> unit
     FilterWaterResistDown -> unit
     FilterWindResistDown -> unit
+    FilterSingleTgtFireDmgRcvdUp -> unit
+    FilterSingleTgtIceDmgRcvdUp -> unit
+    FilterSingleTgtLightningDmgRcvdUp -> unit
+    FilterSingleTgtEarthDmgRcvdUp -> unit
+    FilterSingleTgtWaterDmgRcvdUp -> unit
+    FilterSingleTgtWindDmgRcvdUp -> unit
+    FilterAllTgtFireDmgRcvdUp -> unit
+    FilterAllTgtIceDmgRcvdUp -> unit
+    FilterAllTgtLightningDmgRcvdUp -> unit
+    FilterAllTgtEarthDmgRcvdUp -> unit
+    FilterAllTgtWaterDmgRcvdUp -> unit
+    FilterAllTgtWindDmgRcvdUp -> unit
     FilterFireWeakness -> unit
     FilterIceWeakness -> unit
     FilterLightningWeakness -> unit
@@ -1162,12 +1424,20 @@ exhaustiveWeaponEffectMatch =
   , MagicDamageBonus { range, durExt, percentage }
   , PhysATBConservationEffect { range, durExt }
   , MagATBConservationEffect { range, durExt }
+  , AmpPhysAbilities { range, durExt, percentage }
+  , AmpMagAbilities { range, durExt, percentage }
   , FireDamageUp { range, durExt, potencies }
   , IceDamageUp { range, durExt, potencies }
   , LightningDamageUp { range, durExt, potencies }
   , EarthDamageUp { range, durExt, potencies }
   , WaterDamageUp { range, durExt, potencies }
   , WindDamageUp { range, durExt, potencies }
+  , AmpFireAbilities { range, durExt, percentage }
+  , AmpIceAbilities { range, durExt, percentage }
+  , AmpLightningAbilities { range, durExt, percentage }
+  , AmpEarthAbilities { range, durExt, percentage }
+  , AmpWaterAbilities { range, durExt, percentage }
+  , AmpWindAbilities { range, durExt, percentage }
   , FireResistUp { range, durExt, potencies }
   , IceResistUp { range, durExt, potencies }
   , LightningResistUp { range, durExt, potencies }
@@ -1198,7 +1468,22 @@ exhaustiveWeaponEffectMatch =
   , MatkDown { range, durExt, potencies }
   , PdefDown { range, durExt, potencies }
   , MdefDown { range, durExt, potencies }
-
+  , SingleTgtPhysDmgRcvdUp { range, durExt, percentage }
+  , SingleTgtMagDmgRcvdUp { range, durExt, percentage }
+  , AllTgtPhysDmgRcvdUp { range, durExt, percentage }
+  , AllTgtMagDmgRcvdUp { range, durExt, percentage }
+  , SingleTgtFireDmgRcvdUp { range, durExt, percentage }
+  , SingleTgtIceDmgRcvdUp { range, durExt, percentage }
+  , SingleTgtLightningDmgRcvdUp { range, durExt, percentage }
+  , SingleTgtEarthDmgRcvdUp { range, durExt, percentage }
+  , SingleTgtWaterDmgRcvdUp { range, durExt, percentage }
+  , SingleTgtWindDmgRcvdUp { range, durExt, percentage }
+  , AllTgtFireDmgRcvdUp { range, durExt, percentage }
+  , AllTgtIceDmgRcvdUp { range, durExt, percentage }
+  , AllTgtLightningDmgRcvdUp { range, durExt, percentage }
+  , AllTgtEarthDmgRcvdUp { range, durExt, percentage }
+  , AllTgtWaterDmgRcvdUp { range, durExt, percentage }
+  , AllTgtWindDmgRcvdUp { range, durExt, percentage }
   , FireDamageDown { range, durExt, potencies }
   , IceDamageDown { range, durExt, potencies }
   , LightningDamageDown { range, durExt, potencies }
@@ -1260,12 +1545,18 @@ exhaustiveWeaponEffectMatch =
     MatkDown _ -> unit
     PdefDown _ -> unit
     MdefDown _ -> unit
+    SingleTgtPhysDmgRcvdUp _ -> unit
+    SingleTgtMagDmgRcvdUp _ -> unit
+    AllTgtPhysDmgRcvdUp _ -> unit
+    AllTgtMagDmgRcvdUp _ -> unit
     PhysicalWeaponBoost _ -> unit
     MagicWeaponBoost _ -> unit
     PhysicalDamageBonus _ -> unit
     MagicDamageBonus _ -> unit
     PhysATBConservationEffect _ -> unit
     MagATBConservationEffect _ -> unit
+    AmpPhysAbilities _ -> unit
+    AmpMagAbilities _ -> unit
     FireWeaponBoost _ -> unit
     IceWeaponBoost _ -> unit
     LightningWeaponBoost _ -> unit
@@ -1278,6 +1569,12 @@ exhaustiveWeaponEffectMatch =
     EarthDamageBonus _ -> unit
     WaterDamageBonus _ -> unit
     WindDamageBonus _ -> unit
+    AmpFireAbilities _ -> unit
+    AmpIceAbilities _ -> unit
+    AmpLightningAbilities _ -> unit
+    AmpEarthAbilities _ -> unit
+    AmpWaterAbilities _ -> unit
+    AmpWindAbilities _ -> unit
     FireATBConservationEffect _ -> unit
     IceATBConservationEffect _ -> unit
     LightningATBConservationEffect _ -> unit
@@ -1296,6 +1593,18 @@ exhaustiveWeaponEffectMatch =
     EarthResistDown _ -> unit
     WaterResistDown _ -> unit
     WindResistDown _ -> unit
+    SingleTgtFireDmgRcvdUp _ -> unit
+    SingleTgtIceDmgRcvdUp _ -> unit
+    SingleTgtLightningDmgRcvdUp _ -> unit
+    SingleTgtEarthDmgRcvdUp _ -> unit
+    SingleTgtWaterDmgRcvdUp _ -> unit
+    SingleTgtWindDmgRcvdUp _ -> unit
+    AllTgtFireDmgRcvdUp _ -> unit
+    AllTgtIceDmgRcvdUp _ -> unit
+    AllTgtLightningDmgRcvdUp _ -> unit
+    AllTgtEarthDmgRcvdUp _ -> unit
+    AllTgtWaterDmgRcvdUp _ -> unit
+    AllTgtWindDmgRcvdUp _ -> unit
     FireWeakness _ -> unit
     IceWeakness _ -> unit
     LightningWeakness _ -> unit
