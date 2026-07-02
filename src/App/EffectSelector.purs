@@ -421,6 +421,8 @@ hasPotencies = case _ of
     FilterMagicDamageBonus -> false
     FilterPhysATBConservationEffect -> false
     FilterMagATBConservationEffect -> false
+    FilterAmpPhysAbilities -> false
+    FilterAmpMagAbilities -> false
     FilterFireDamageUp -> true
     FilterIceDamageUp -> true
     FilterLightningDamageUp -> true
@@ -451,11 +453,20 @@ hasPotencies = case _ of
     FilterEarthATBConservationEffect -> false
     FilterWaterATBConservationEffect -> false
     FilterWindATBConservationEffect -> false
-
+    FilterAmpFireAbilities -> false
+    FilterAmpIceAbilities -> false
+    FilterAmpLightningAbilities -> false
+    FilterAmpEarthAbilities -> false
+    FilterAmpWaterAbilities -> false
+    FilterAmpWindAbilities -> false
     FilterPatkDown -> true
     FilterMatkDown -> true
     FilterPdefDown -> true
     FilterMdefDown -> true
+    FilterSingleTgtPhysDmgRcvdUp -> false
+    FilterSingleTgtMagDmgRcvdUp -> false
+    FilterAllTgtPhysDmgRcvdUp -> false
+    FilterAllTgtMagDmgRcvdUp -> false
     FilterFireDamageDown -> true
     FilterIceDamageDown -> true
     FilterLightningDamageDown -> true
@@ -468,6 +479,18 @@ hasPotencies = case _ of
     FilterEarthResistDown -> true
     FilterWaterResistDown -> true
     FilterWindResistDown -> true
+    FilterSingleTgtFireDmgRcvdUp -> false
+    FilterSingleTgtIceDmgRcvdUp -> false
+    FilterSingleTgtLightningDmgRcvdUp -> false
+    FilterSingleTgtEarthDmgRcvdUp -> false
+    FilterSingleTgtWaterDmgRcvdUp -> false
+    FilterSingleTgtWindDmgRcvdUp -> false
+    FilterAllTgtFireDmgRcvdUp -> false
+    FilterAllTgtIceDmgRcvdUp -> false
+    FilterAllTgtLightningDmgRcvdUp -> false
+    FilterAllTgtEarthDmgRcvdUp -> false
+    FilterAllTgtWaterDmgRcvdUp -> false
+    FilterAllTgtWindDmgRcvdUp -> false
     FilterFireWeakness -> false
     FilterIceWeakness -> false
     FilterLightningWeakness -> false
