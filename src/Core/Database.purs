@@ -282,6 +282,8 @@ rangeOf = case _ of
   MagicDamageBonus r -> Just r.range
   PhysATBConservationEffect r -> Just r.range
   MagATBConservationEffect r -> Just r.range
+  AmpPhysAbilities r -> Just r.range
+  AmpMagAbilities r -> Just r.range
   FireDamageUp r -> Just r.range
   IceDamageUp r -> Just r.range
   LightningDamageUp r -> Just r.range
@@ -306,6 +308,12 @@ rangeOf = case _ of
   EarthATBConservationEffect r -> Just r.range
   WaterATBConservationEffect r -> Just r.range
   WindATBConservationEffect r -> Just r.range
+  AmpFireAbilities r -> Just r.range
+  AmpIceAbilities r -> Just r.range
+  AmpLightningAbilities r -> Just r.range
+  AmpEarthAbilities r -> Just r.range
+  AmpWaterAbilities r -> Just r.range
+  AmpWindAbilities r -> Just r.range
   FireResistUp r -> Just r.range
   IceResistUp r -> Just r.range
   LightningResistUp r -> Just r.range
@@ -318,6 +326,10 @@ rangeOf = case _ of
   MatkDown r -> Just r.range
   PdefDown r -> Just r.range
   MdefDown r -> Just r.range
+  SingleTgtPhysDmgRcvdUp r -> Just r.range
+  SingleTgtMagDmgRcvdUp r -> Just r.range
+  AllTgtPhysDmgRcvdUp r -> Just r.range
+  AllTgtMagDmgRcvdUp r -> Just r.range
   FireDamageDown r -> Just r.range
   IceDamageDown r -> Just r.range
   LightningDamageDown r -> Just r.range
@@ -330,6 +342,18 @@ rangeOf = case _ of
   EarthResistDown r -> Just r.range
   WaterResistDown r -> Just r.range
   WindResistDown r -> Just r.range
+  SingleTgtFireDmgRcvdUp r -> Just r.range
+  SingleTgtIceDmgRcvdUp r -> Just r.range
+  SingleTgtLightningDmgRcvdUp r -> Just r.range
+  SingleTgtEarthDmgRcvdUp r -> Just r.range
+  SingleTgtWaterDmgRcvdUp r -> Just r.range
+  SingleTgtWindDmgRcvdUp r -> Just r.range
+  AllTgtFireDmgRcvdUp r -> Just r.range
+  AllTgtIceDmgRcvdUp r -> Just r.range
+  AllTgtLightningDmgRcvdUp r -> Just r.range
+  AllTgtEarthDmgRcvdUp r -> Just r.range
+  AllTgtWaterDmgRcvdUp r -> Just r.range
+  AllTgtWindDmgRcvdUp r -> Just r.range
   FireWeakness r -> Just r.range
   IceWeakness r -> Just r.range
   LightningWeakness r -> Just r.range
@@ -361,6 +385,8 @@ potenciesOf = case _ of
   MagicDamageBonus _ -> Nothing
   PhysATBConservationEffect _ -> Nothing
   MagATBConservationEffect _ -> Nothing
+  AmpPhysAbilities _ -> Nothing
+  AmpMagAbilities _ -> Nothing
   FireDamageUp r -> Just r.potencies
   IceDamageUp r -> Just r.potencies
   LightningDamageUp r -> Just r.potencies
@@ -385,6 +411,12 @@ potenciesOf = case _ of
   EarthATBConservationEffect _ -> Nothing
   WaterATBConservationEffect _ -> Nothing
   WindATBConservationEffect _ -> Nothing
+  AmpFireAbilities _ -> Nothing
+  AmpIceAbilities _ -> Nothing
+  AmpLightningAbilities _ -> Nothing
+  AmpEarthAbilities _ -> Nothing
+  AmpWaterAbilities _ -> Nothing
+  AmpWindAbilities _ -> Nothing
   FireResistUp r -> Just r.potencies
   IceResistUp r -> Just r.potencies
   LightningResistUp r -> Just r.potencies
@@ -397,6 +429,10 @@ potenciesOf = case _ of
   MatkDown r -> Just r.potencies
   PdefDown r -> Just r.potencies
   MdefDown r -> Just r.potencies
+  SingleTgtPhysDmgRcvdUp _ -> Nothing
+  SingleTgtMagDmgRcvdUp _ -> Nothing
+  AllTgtPhysDmgRcvdUp _ -> Nothing
+  AllTgtMagDmgRcvdUp _ -> Nothing
   FireDamageDown r -> Just r.potencies
   IceDamageDown r -> Just r.potencies
   LightningDamageDown r -> Just r.potencies
@@ -409,6 +445,18 @@ potenciesOf = case _ of
   EarthResistDown r -> Just r.potencies
   WaterResistDown r -> Just r.potencies
   WindResistDown r -> Just r.potencies
+  SingleTgtFireDmgRcvdUp _ -> Nothing
+  SingleTgtIceDmgRcvdUp _ -> Nothing
+  SingleTgtLightningDmgRcvdUp _ -> Nothing
+  SingleTgtEarthDmgRcvdUp _ -> Nothing
+  SingleTgtWaterDmgRcvdUp _ -> Nothing
+  SingleTgtWindDmgRcvdUp _ -> Nothing
+  AllTgtFireDmgRcvdUp _ -> Nothing
+  AllTgtIceDmgRcvdUp _ -> Nothing
+  AllTgtLightningDmgRcvdUp _ -> Nothing
+  AllTgtEarthDmgRcvdUp _ -> Nothing
+  AllTgtWaterDmgRcvdUp _ -> Nothing
+  AllTgtWindDmgRcvdUp _ -> Nothing
   FireWeakness _ -> Nothing
   IceWeakness _ -> Nothing
   LightningWeakness _ -> Nothing
@@ -439,6 +487,8 @@ tagOf = case _ of
   MagicDamageBonus _ -> FilterMagicDamageBonus
   PhysATBConservationEffect _ -> FilterPhysATBConservationEffect
   MagATBConservationEffect _ -> FilterMagATBConservationEffect
+  AmpPhysAbilities  _ -> FilterAmpPhysAbilities
+  AmpMagAbilities _ -> FilterAmpMagAbilities
   FireDamageUp _ -> FilterFireDamageUp
   IceDamageUp _ -> FilterIceDamageUp
   LightningDamageUp _ -> FilterLightningDamageUp
@@ -463,6 +513,12 @@ tagOf = case _ of
   EarthATBConservationEffect _ -> FilterEarthATBConservationEffect
   WaterATBConservationEffect _ -> FilterWaterATBConservationEffect
   WindATBConservationEffect _ -> FilterWindATBConservationEffect
+  AmpFireAbilities  _ -> FilterAmpFireAbilities
+  AmpIceAbilities _ -> FilterAmpIceAbilities
+  AmpLightningAbilities _ -> FilterAmpLightningAbilities
+  AmpEarthAbilities _ -> FilterAmpEarthAbilities
+  AmpWaterAbilities _ -> FilterAmpWaterAbilities
+  AmpWindAbilities _ -> FilterAmpWindAbilities
   FireResistUp _ -> FilterFireResistUp
   IceResistUp _ -> FilterIceResistUp
   LightningResistUp _ -> FilterLightningResistUp
@@ -475,6 +531,10 @@ tagOf = case _ of
   MatkDown _ -> FilterMatkDown
   PdefDown _ -> FilterPdefDown
   MdefDown _ -> FilterMdefDown
+  SingleTgtPhysDmgRcvdUp _ -> FilterSingleTgtPhysDmgRcvdUp
+  SingleTgtMagDmgRcvdUp _ -> FilterSingleTgtMagDmgRcvdUp
+  AllTgtPhysDmgRcvdUp _ -> FilterAllTgtPhysDmgRcvdUp
+  AllTgtMagDmgRcvdUp _ -> FilterAllTgtMagDmgRcvdUp
   FireDamageDown _ -> FilterFireDamageDown
   IceDamageDown _ -> FilterIceDamageDown
   LightningDamageDown _ -> FilterLightningDamageDown
@@ -487,6 +547,18 @@ tagOf = case _ of
   EarthResistDown _ -> FilterEarthResistDown
   WaterResistDown _ -> FilterWaterResistDown
   WindResistDown _ -> FilterWindResistDown
+  SingleTgtFireDmgRcvdUp _ -> FilterSingleTgtFireDmgRcvdUp
+  SingleTgtIceDmgRcvdUp _ -> FilterSingleTgtIceDmgRcvdUp
+  SingleTgtLightningDmgRcvdUp _ -> FilterSingleTgtLightningDmgRcvdUp
+  SingleTgtEarthDmgRcvdUp _ -> FilterSingleTgtEarthDmgRcvdUp
+  SingleTgtWaterDmgRcvdUp _ -> FilterSingleTgtWaterDmgRcvdUp
+  SingleTgtWindDmgRcvdUp _ -> FilterSingleTgtWindDmgRcvdUp
+  AllTgtFireDmgRcvdUp _ -> FilterAllTgtFireDmgRcvdUp
+  AllTgtIceDmgRcvdUp _ -> FilterAllTgtIceDmgRcvdUp
+  AllTgtLightningDmgRcvdUp _ -> FilterAllTgtLightningDmgRcvdUp
+  AllTgtEarthDmgRcvdUp _ -> FilterAllTgtEarthDmgRcvdUp
+  AllTgtWaterDmgRcvdUp _ -> FilterAllTgtWaterDmgRcvdUp
+  AllTgtWindDmgRcvdUp _ -> FilterAllTgtWindDmgRcvdUp
   FireWeakness _ -> FilterFireWeakness
   IceWeakness _ -> FilterIceWeakness
   LightningWeakness _ -> FilterLightningWeakness
